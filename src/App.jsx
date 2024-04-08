@@ -1,108 +1,48 @@
-import { useState } from 'react'
-import './assets/App.scss'
+import { useEffect, useState } from 'react'
+import '@/assets/scss/App.scss'
 // import './App.css'
-import dashboardIcon from './assets/images/dashboard.svg'
-import ordersIcon from './assets/images/orders.svg'
-import customersIcon from './assets/images/customers.svg'
-import inventoryIcon from './assets/images/inventory.svg'
-import conversationIcon from './assets/images/conversation.svg'
-import settingsIcon from './assets/images/settings.svg'
-import customerSupportIcon from './assets/images/customersupport.svg'
-import giftsIcon from './assets/images/gifts.svg'
-import logoutIcon from './assets/images/logout.svg'
-import arrowRightIcon from './assets/images/arrowright.svg'
-import metricLogo from './assets/images/metriclogo.svg'
-import marketingChart from './assets/images/marketingchart.svg'
-import notificationIcon from './assets/images/notification.svg'
-import burgerIconForMobile from './assets/images/burger.svg'
-import chevronDownIcon from './assets/images/chevrondown.svg'
-import breadCrumbIcon from './assets/images/breadcrumb.svg'
-import salesIcon from './assets/images/dashboard/sales.svg'
-import cartIcon from './assets/images/dashboard/cart.svg'
-import homeIcon from './assets/images/dashboard/home.svg'
-import dashboardInventoryIcon from './assets/images/dashboard/inventory.svg'
+import ordersIcon from '@/assets/images/orders.svg'
+import customersIcon from '@/assets/images/customers.svg'
+import marketingChart from '@/assets/images/marketingchart.svg'
+import chevronDownIcon from '@/assets/images/chevrondown.svg'
+import salesIcon from '@/assets/images/dashboard/sales.svg'
+import cartIcon from '@/assets/images/dashboard/cart.svg'
+import dashboardInventoryIcon from '@/assets/images/dashboard/inventory.svg'
+import blueChevronDownIcon from '@/assets/images/dashboard/chevron.svg'
+import blackChevronDownIcon from '@/assets/images/dashboard/blackchevron.svg'
 
 function App () {
+  const [sidebarState, setSidebarState] = useState(false)
+
+  useEffect(() => {
+    sidebarState
+      ? document.body.classList.add('overflow-hidden')
+      : document.body.classList.remove('overflow-hidden')
+  }, [sidebarState]
+)
+
+
+  const handleSidebarState = (operation) => {
+    switch (operation) {
+      case 'OPEN':
+        setSidebarState(true)
+        break
+      case 'CLOSE':
+        setSidebarState(false)
+        break
+    }
+  }
+
   return (
     <>
+      {/* <Sidebar handleSidebarState={handleSidebarState} sidebarState={sidebarState} /> */}
       <div className='dashboard'>
-        <div className='side-bar'>
-          <div className='logo'>
-            <div className='group-1'>
-              <img className='graph' src={metricLogo} />
-            </div>
-            <div className='metrix'>Metrix</div>
-          </div>
-          <div className='menu-items'>
-            <div className='active'>
-              <div className='iconly-bulk-category'>
-                <img className='category' src={dashboardIcon} />
-              </div>
-              <div className='dashboard-1'>Dashboard</div>
-            </div>
-            <div className='menu-item'>
-              <div className='iconly-light-bag'>
-                <img className='bag' src={ordersIcon} />
-              </div>
-              <div className='orders'>Orders</div>
-              <div className='frame-21'>
-                <span className='container-1'>3</span>
-              </div>
-            </div>
-            <div className='menu-item-1'>
-              <div className='iconly-light-2-user'>
-                <img className='user' src={customersIcon} />
-              </div>
-              <div className='customers'>Customers</div>
-            </div>
-            <div className='menu-item-2'>
-              <div className='iconly-light-folder'>
-                <img className='folder' src={inventoryIcon} />
-              </div>
-              <div className='inventory'>Inventory</div>
-            </div>
-            <div className='menu-item-3'>
-              <div className='iconly-light-chat'>
-                <img className='chat' src={conversationIcon} />
-              </div>
-              <div className='conversations'>Conversations</div>
-              <div className='frame-2'>
-                <span className='container'>16</span>
-              </div>
-            </div>
-            <div className='menu-item-4'>
-              <div className='iconly-light-setting'>
-                <img className='setting' src={settingsIcon} />
-              </div>
-              <div className='settings'>Settings</div>
-            </div>
-          </div>
-          <div className='logout'>
-            <img className='fiheadphones' src={customerSupportIcon} />
-            <div className='contact-support'>Contact Support</div>
-          </div>
-          <div className='banner'>
-            <div className='frame-7'>
-              <img className='figift' src={giftsIcon} />
-              <div className='free-gift-awaits-you'>Free Gift Awaits You!</div>
-            </div>
-            <div className='frame-6'>
-              <span className='upgrade-your-account'>Upgrade your account</span>
-              <div className='chevron-down fichevron-down-2'>
-                <img className='vector-7' src={arrowRightIcon} />
-              </div>
-            </div>
-          </div>
-          <div className='bottom-1'>
-            <div className='iconly-bulk-logout'>
-              <img className='logout-1' src={logoutIcon} />
-            </div>
-            <div className='logout-2'>Logout</div>
-          </div>
-        </div>
-        <div className='main-container'>
-          <div className='top-nav'>
+        {/* <div className='main-container'> */}
+          {/* <div className='top-nav'>
             <div className='top-nav-1'>
+              <button onClick={() => handleSidebarState('OPEN')} className="burger-icon--wrapper">
+                <img src={burgerIconForMobile} />
+              </button>
               <div className='dashboard-2'>Dashboard</div>
               <div className='profile'>
                 <div className='nav-header-dropdown--wrapper'>
@@ -123,12 +63,12 @@ function App () {
             <div className='breadcrumbs'>
               <img className='home' src={homeIcon} />
             </div>
-          </div>
+          </div> */}
           <div className='container'>
             {/* <div className='frame-16'> */}
             <div className='dashboard-summary-card sales-card'>
               <div className='summary-heading-1 summary-heading'>
-                <div className='icon-2 dashboard-summary--icon'>
+                <div className='sales-icon dashboard-summary--icon'>
                   <img className='graph-1' src={salesIcon} />
                 </div>
                 <div className='filter filter-1'>
@@ -140,13 +80,13 @@ function App () {
               </div>
               <div className='card-details--wrapper frame-15'>
                 <div className='card-details-item frame-13'>
-                  <div className='customers-1 text-black-30 header'>Sales</div>
+                  <div className='customers-1 header'>Sales</div>
                   <div className='frame-12'>
                     <span className='container-2 header-text-active'>₦4,000,000.00</span>
                   </div>
                 </div>
                 <div className='card-details-item frame-14'>
-                  <div className='active-1 text-black-30 header'>Volume</div>
+                  <div className='active-1 header'>Volume</div>
                   <div className='frame-121 header-text-active--wrapper'>
                     <span className='container-3 header-text-active'>450</span>
                     <div className='container-4 percentage'>+20.00%</div>
@@ -168,7 +108,7 @@ function App () {
               </div>
               <div className='card-details--wrapper frame-151'>
                 <div className='card-details-item frame-131'>
-                  <div className='customers-2 text-black-30 header'>
+                  <div className='customers-2 header'>
                     Customers
                   </div>
                   <div className='frame-122 header-text-active--wrapper'>
@@ -179,7 +119,7 @@ function App () {
                   </div>
                 </div>
                 <div className='card-details-item frame-141'>
-                  <div className='active-2 text-black-30 header'>Active</div>
+                  <div className='active-2 header'>Active</div>
                   <div className='frame-123 header-text-active--wrapper'>
                     <span className='container-7 header-text-active'>
                       1,180
@@ -191,7 +131,7 @@ function App () {
             </div>
             <div className='dashboard-summary-card-2  dashboard-summary-card all-orders-card'>
               <div className='summary-heading-3 summary-heading'>
-                <div className='icon-4 dashboard-summary--icon'>
+                <div className='all-orders-icon dashboard-summary--icon'>
                   <img className='bag-1' src={ordersIcon} />
                 </div>
                 <div className='filter filter-3'>
@@ -203,7 +143,7 @@ function App () {
               </div>
               <div className='card-details--wrapper frame-152'>
                 <div className='card-details-item frame-132'>
-                  <div className='all-orders text-black-30 header'>
+                  <div className='all-orders header'>
                     All Orders
                   </div>
                   <div className='frame-124'>
@@ -211,13 +151,13 @@ function App () {
                   </div>
                 </div>
                 <div className='card-details-item frame-142'>
-                  <div className='pending text-black-30 header'>Pending</div>
+                  <div className='pending header'>Pending</div>
                   <div className='frame-125'>
                     <span className='container-10 header-text-active'>5</span>
                   </div>
                 </div>
                 <div className='card-details-item frame-153'>
-                  <div className='completed text-black-30 header'>
+                  <div className='completed header'>
                     Completed
                   </div>
                   <div className='frame-126'>
@@ -256,13 +196,13 @@ function App () {
             </div>
             <div className='dashboard-summary-card-3 dashboard-summary-card products-card'>
               <div className='summary-heading-4 summary-heading'>
-                <div className='icon-5 dashboard-summary--icon'>
+                <div className='inventory-card-icon dashboard-summary--icon'>
                   <img className='folder-1' src={dashboardInventoryIcon} />
                 </div>
               </div>
               <div className='card-details--wrapper frame-154'>
                 <div className='card-details-item frame-133'>
-                  <div className='customers-3 text-black-30 header all-products'>
+                  <div className='customers-3 header all-products'>
                     All Products
                   </div>
                   <div className='frame-127'>
@@ -270,7 +210,7 @@ function App () {
                   </div>
                 </div>
                 <div className='card-details-item frame-143'>
-                  <div className='active-3 text-black-30 header all-products'>Active</div>
+                  <div className='active-3 header all-products'>Active</div>
                   <div className='frame-128 header-text-active--wrapper'>
                     <span className='container-13 header-text-active all-products'>
                       32
@@ -282,7 +222,7 @@ function App () {
             </div>
             <div className='dashboard-summary-card-4 abandoned-cart-card dashboard-summary-card'>
               <div className='summary-heading-5 summary-heading'>
-                <div className='icon-6 dashboard-summary--icon'>
+                <div className='cart-icon dashboard-summary--icon'>
                   <img className='fishopping-cart' src={cartIcon} />
                 </div>
                 <div className='filter filter-5'>
@@ -305,9 +245,9 @@ function App () {
                   </div>
                 </div>
                 <div className='card-details-item frame-144'>
-                  <div className='active-4 text-black-30 header'>Customers</div>
+                  <div className='active-4 header'>Customers</div>
                   <div className='frame-1210'>
-                    <span className='container-17'>30</span>
+                    <span className='container-17 header-text-active'>30</span>
                   </div>
                 </div>
               </div>
@@ -501,72 +441,72 @@ function App () {
             {/* </div> */}
             {/* </div> */}
             <div className='bottom sales-graph-chart dashboard-summary-card'>
-              <div className='summary-heading'>
-                <div className='frame-20'>
+              <div className='summary-heading sales-graph'>
+                <div className='frame-20 summary-of-sales'>
                   <div className='summary'>Summary</div>
-                  <div className='icon'>
+                  <div className='icon sales-dropdown--container'>
                     <span className='sales'>Sales</span>
                     <div className='chevron-down fichevron-down'>
-                      <img className='vector-17' src={chevronDownIcon} />
+                      <img className='blue-chevron-down-icon' src={blueChevronDownIcon} style={{stroke: '#5570f1'}} />
                     </div>
                   </div>
                 </div>
                 <div className='filter'>
                   <span className='last-7-days'>Last 7 Days</span>
                   <div className='chevron-down fichevron-down-1'>
-                    <img className='vector-18' src={chevronDownIcon} />
+                    <img className='vector-18' src={blackChevronDownIcon} />
                   </div>
                 </div>
               </div>
-              <div className='graph-bar'>
-                <div className='xaxis'>
-                  <div className='k'>100k</div>
-                  <div className='k-1'>80k</div>
-                  <div className='k-2'>60k</div>
-                  <div className='k-3'>40k</div>
-                  <span className='k-4'>20k</span>
+              <div className='graph-bar sales-bar-chart'>
+                <div className='xaxis y-axis'>
+                  <div className='k y-axis-item'>100k</div>
+                  <div className='k-1 y-axis-item'>80k</div>
+                  <div className='k-2 y-axis-item'>60k</div>
+                  <div className='k-3 y-axis-item'>40k</div>
+                  <span className='k-4 y-axis-item'>20k</span>
                 </div>
-                <div className='bar'>
-                  <div className='bar-1'>
-                    <div className='rectangle-2'></div>
+                <div className='bar bar--wrapper'>
+                  <div className='bar-1 bar'>
+                    <div className='rectangle-2 blue-bar blue-bar-1'></div>
                   </div>
-                  <span className='sept-10'>Sept 10</span>
+                  <span className='sept-10 bar-chart-label'>Sept 10</span>
                 </div>
-                <div className='bar-2'>
-                  <div className='bar-3'>
-                    <div className='rectangle-21'></div>
+                <div className='bar-2 bar--wrapper'>
+                  <div className='bar-3 bar'>
+                    <div className='rectangle-21 blue-bar blue-bar-2'></div>
                   </div>
-                  <span className='sept-11'>Sept 11</span>
+                  <span className='sept-11 bar-chart-label'>Sept 11</span>
                 </div>
-                <div className='bar-4'>
-                  <div className='bar-5'>
-                    <div className='rectangle-22'></div>
+                <div className='bar-4 bar--wrapper'>
+                  <div className='bar-5 bar'>
+                    <div className='rectangle-22 blue-bar blue-bar-3'></div>
                   </div>
-                  <span className='sept-12'>Sept 12</span>
+                  <span className='sept-12 bar-chart-label'>Sept 12</span>
                 </div>
-                <div className='bar-6'>
-                  <div className='bar-7'>
-                    <div className='rectangle-23'></div>
+                <div className='bar-6 bar--wrapper'>
+                  <div className='bar-7 bar'>
+                    <div className='rectangle-23 blue-bar blue-bar-4'></div>
                   </div>
-                  <span className='sept-13'>Sept 13</span>
+                  <span className='sept-13 bar-chart-label'>Sept 13</span>
                 </div>
-                <div className='bar-8'>
-                  <div className='bar-9'>
-                    <div className='rectangle-24'></div>
+                <div className='bar-8 bar--wrapper'>
+                  <div className='bar-9 bar'>
+                    <div className='rectangle-24 blue-bar blue-bar-5'></div>
                   </div>
-                  <span className='sept-14'>Sept 14</span>
+                  <span className='sept-14 bar-chart-label'>Sept 14</span>
                 </div>
-                <div className='bar-10'>
-                  <div className='bar-11'>
-                    <div className='rectangle-25'></div>
+                <div className='bar-10 bar--wrapper'>
+                  <div className='bar-11 bar'>
+                    <div className='rectangle-25 blue-bar blue-bar-6'></div>
                   </div>
-                  <span className='sept-15'>Sept 15</span>
+                  <span className='sept-15 bar-chart-label'>Sept 15</span>
                 </div>
-                <div className='bar-12'>
-                  <div className='bar-13'>
-                    <div className='rectangle-26'></div>
+                <div className='bar-12 bar--wrapper'>
+                  <div className='bar-13 bar'>
+                    <div className='rectangle-26 blue-bar blue-bar-7'></div>
                   </div>
-                  <span className='sept-16'>Sept 16</span>
+                  <span className='sept-16 bar-chart-label'>Sept 16</span>
                 </div>
               </div>
             </div>
@@ -574,7 +514,7 @@ function App () {
 
             {/* </div> */}
           </div>
-        </div>
+        {/* </div> */}
       </div>
     </>
   )
