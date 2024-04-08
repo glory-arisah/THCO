@@ -1,5 +1,6 @@
-$sm: 450px; // SMALL SCREEN SIZES
-// $sm: 576px; // SMALL SCREEN SIZES
+$xs: 450px; // xsALL SCREEN SIZES
+// $xs: 576px; // xsALL SCREEN SIZES
+$sm: 641px;
 $md: 768px; // MEDIUM SCREEN SIZES
 // $lg: 992px; //TABLET SCREEN SIZES
 $lg: 1200px; // DESKTOP SCREEN SIZES
@@ -8,7 +9,11 @@ $lg: 1200px; // DESKTOP SCREEN SIZES
 // RESPONSIVE iCLASS MINIMUN MEDIA QUERY WIDTH
 //=============================================
 @mixin breakpoint-up($breakpoint) {
-  @if $breakpoint==sm {
+  @if $breakpoint==xs {
+    @media only screen and (min-width: $xs) {
+      @content;
+    }
+  } @else if $breakpoint==sm {
     @media only screen and (min-width: $sm) {
       @content;
     }
@@ -24,7 +29,11 @@ $lg: 1200px; // DESKTOP SCREEN SIZES
 }
 
 @mixin breakpoint-down($breakpoint) {
-  @if $breakpoint==sm {
+  @if $breakpoint==xs {
+    @media only screen and (max-width: $xs) {
+      @content;
+    }
+  } @else if $breakpoint==sm {
     @media only screen and (max-width: $sm) {
       @content;
     }

@@ -1,0 +1,172 @@
+@use '@/assets/scss/breakpoint' as *;
+@use '@/assets/scss/variables.scss' as *;
+
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 16px;
+  padding: 0 10px;
+  background: #fff;
+
+  @include breakpoint-up(md) {
+    background: transparent;
+    margin-bottom: 24px;
+    padding: 0;
+  }
+
+  .top-nav-1 {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 14px;
+    // box-sizing: border-box;
+    @include breakpoint-up(md) {
+      padding: 14px 21px;
+      // padding: 0.9rem 1.3rem;
+      // width: 71.5rem;
+      background: #ffffff;
+    }
+
+    .burger-icon--wrapper {
+      border: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      background-color: transparent;
+      @include breakpoint-up(md) {
+        display: none;
+      }
+
+      &:hover {
+        background-color: #53545C1F;
+        cursor: pointer;
+      }
+    }
+
+    .dashboard-2 {
+      display: inline-block;
+      line-height: 30px;
+      font-family: var(--sub-heading-3-font-family);
+      font-weight: var(--sub-heading-3-medium-font-weight);
+      font-size: var(--sub-heading-3-medium-font-size);
+      color: var(--black-60, #45464e);
+      @include breakpoint-up(md) {
+        margin: 0.1rem 0.9rem 0.1rem 0;
+        overflow-wrap: break-word;
+        // width: 52.6rem;
+      }
+    }
+
+    .profile {
+      display: flex;
+      @include breakpoint-up(md) {
+        // flex-direction: row;
+        // width: 15.4rem;
+        // height: fit-content;
+        // box-sizing: border-box;
+      }
+
+      .nav-header-dropdown--wrapper {
+        display: none;
+        @include breakpoint-up(md) {
+          display: flex;
+          justify-content: space-between;
+          padding: 0.5rem 1.1rem 0.5rem 0.8rem;
+          background: var(--secondary-20, #fef5ea);
+          border-radius: 8px;
+          margin-right: 10px;
+          margin-right: 20px;
+          // margin-right: 1.4rem;
+          // flex-direction: row;
+          // width: 9.6rem;
+          // box-sizing: border-box;
+        }
+        // CONVERT NANNY'S SHOP TO DROPDOWN ITEM FOR PROFILE PIC
+        .nannys-shop {
+          font-family: var(--paragraph-2-regular-font-family);
+          font-weight: var(--paragraph-2-regular-font-weight);
+          font-size: var(--paragraph-2-regular-font-size);
+          color: var(--black-100, #1c1d22);
+          // margin-right: 8px;
+          line-height: 16.94px;
+          text-align: left;
+          margin-right: 20px;
+          @include breakpoint-up(md) {
+            // width: 6.7rem;
+            overflow-wrap: break-word;
+          }
+        }
+
+        .nav-header--chevron-down {
+          display: flex;
+          justify-content: center;
+          width: 20px;
+          height: 20px;
+          @include breakpoint-up(md) {
+            // margin: 0.4rem 0;
+            // width: 0.6rem;
+            // height: 0.3rem;
+          }
+
+          .nav-header--chevron-down__icon {
+            width: 10px;
+            height: 20px;
+          }
+        }
+      }
+
+      .iconly-bulk-notification {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        width: 20px;
+        height: 20px;
+        margin: 6px 20px 6px 6px;
+        // flex-direction: row;
+        @include breakpoint-up(md) {
+          display: flex;
+          // margin: 0.5rem 1.4rem 0.5rem 0;
+          // width: 0.9rem;
+          // height: 1rem;
+        }
+
+        .notification {
+          width: 14.17px;
+          height: 16.67px;
+        }
+      }
+
+      .nav-header--profile__img {
+        border-radius: 8px;
+        background: url('@/assets/images/dashboard/profile-pic.jpeg') 50% /
+          cover no-repeat;
+        width: 32px;
+        height: 32px;
+      }
+    }
+  }
+
+  .breadcrumbs {
+    display: none;
+    @include breakpoint-up(md) {
+      display: block;
+      background: #ffffff;
+      border-top: 1px solid var(--stroke, #f1f3f9);
+      padding: 4px 20px;
+      // width: 71.5rem;
+      // height: 1.5rem;
+    }
+
+    .home {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}

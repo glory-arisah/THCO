@@ -1,0 +1,15 @@
+@use '@/assets/scss/breakpoint' as *;
+// @use '@/assets/scss/variables.scss' as *;
+
+.sidebar-expanded {
+  display: flex;
+  overflow: hidden;
+
+  @include breakpoint-up (md) {
+    overflow-y: visible;
+  }
+}
+
+.flex-1 {
+  flex: 1;
+}
